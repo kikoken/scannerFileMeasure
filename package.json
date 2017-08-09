@@ -1,0 +1,31 @@
+{
+  "name": "scannerfilemeasure",
+  "version": "0.1.0",
+  "description": "medidor de tamaño en bytes de archivo escaneado",
+  "main": "dist/scr/scannerfilemeasure.js",
+  "scripts": {
+    "build": "babel src/scannerfilemanager.js -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kikoken/scannerFileMeasure.git"
+  },
+  "keywords": [
+    "scanner",
+    "file",
+    "measure",
+    "bytes"
+  ],
+  "author": "Carlos Godoy <kikoken@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kikoken/scannerFileMeasure/issues"
+  },
+  "homepage": "https://github.com/kikoken/scannerFileMeasure#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  }
+}
