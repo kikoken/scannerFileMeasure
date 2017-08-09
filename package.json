@@ -2,9 +2,9 @@
   "name": "scannerfilemeasure",
   "version": "0.1.0",
   "description": "medidor de tamaño en bytes de archivo escaneado",
-  "main": "dist/scr/scannerfilemeasure.js",
+  "main": "dist/src/scannerfilemeasure.js",
   "scripts": {
-    "build": "babel src/scannerfilemanager.js -d dist"
+    "build": "babel src/scannerfilemeasure.js -d dist"
   },
   "repository": {
     "type": "git",
