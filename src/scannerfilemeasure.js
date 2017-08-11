@@ -14,7 +14,7 @@ function scannerFileMeasure() {
     let rh, rv
 
     return {
-        setpage: setPage,
+        setPage: setPage,
         setUnit: setUnit,
         setResolution: setResolution,
         getDimension: getBytesDimensiones,
@@ -38,8 +38,7 @@ function scannerFileMeasure() {
 
             page.width = width
             page.height = height
-            console.info('PAGE >>',`Anchura: ${page.width} / Altura: ${page.height}`)
-
+            
             return `${page.width} / ${page.height}`
         } catch (error) {
             _handleError(error)
@@ -56,7 +55,8 @@ function scannerFileMeasure() {
                 throw 'Error en la unidad de medida, sólo se permite cm y in'
 
             unit = _unit_
-            console.info('UNIDAD >>',`${unit}`)
+
+            return unit
         } catch (error) {
             _handleError(error)
         }
@@ -79,7 +79,7 @@ function scannerFileMeasure() {
             rh = _rh_
             rv = _rv_
 
-            console.info('RESOLUTION >>',`Horizontal: ${rh} ppp / Vertical: ${rv} ppp`)
+            return `${rv} / ${rh}`
         } catch (error) {
             _handleError(error)
         }
@@ -101,7 +101,7 @@ function scannerFileMeasure() {
             let npixel = Math.round((page.width * 1/2.54 * rh) * (page.height * 1/2.54 * rv))
             let nbits = ((bitspixel * npixel) * 1/bitspixel)/MEGABYTE
 
-            console.info('SIZE FILE >> ', `${nbits.toFixed(2)} MB`)
+            return nbits.toFixed(2)
         } catch (error) {
             _handleError(error)
         }
