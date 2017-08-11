@@ -4,7 +4,8 @@
   "description": "medidor de tamaño en bytes de archivo escaneado",
   "main": "dist/src/scannerfilemeasure.js",
   "scripts": {
-    "build": "babel src/scannerfilemeasure.js -d dist"
+    "build": "babel src/scannerfilemeasure.js -d dist",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",

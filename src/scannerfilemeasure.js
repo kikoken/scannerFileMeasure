@@ -39,6 +39,8 @@ function scannerFileMeasure() {
             page.width = width
             page.height = height
             console.info('PAGE >>',`Anchura: ${page.width} / Altura: ${page.height}`)
+
+            return `${page.width} / ${page.height}`
         } catch (error) {
             _handleError(error)
         }
