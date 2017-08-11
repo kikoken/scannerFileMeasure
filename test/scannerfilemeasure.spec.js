@@ -21,4 +21,10 @@ describe('Scanner File Measure',()=>{
         
         expect(setunit).to.equal('cm')
     })
+
+    it('Obtener tamaño del archivo', ()=> {
+        expect(()=>{
+            sfm().getDimension()
+        }).to.throw('Configurar página, resolución y unidad de medida')
+    })
 })

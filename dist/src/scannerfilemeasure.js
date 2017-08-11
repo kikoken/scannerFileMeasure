@@ -89,16 +89,12 @@ function scannerFileMeasure() {
     function getBytesDimensiones() {
         var isReady = page.width > 0 && page.height > 0 && rh > 0 && rv > 0;
 
-        try {
-            if (!isReady) throw 'Debe configurar la página, la resolución y unidad de medida';
+        if (!isReady) throw 'Configurar página, resolución y unidad de medida';
 
-            var npixel = Math.round(page.width * 1 / 2.54 * rh * (page.height * 1 / 2.54 * rv));
-            var nbits = bitspixel * npixel * 1 / bitspixel / MEGABYTE;
+        var npixel = Math.round(page.width * 1 / 2.54 * rh * (page.height * 1 / 2.54 * rv));
+        var nbits = bitspixel * npixel * 1 / bitspixel / MEGABYTE;
 
-            return nbits.toFixed(2);
-        } catch (error) {
-            _handleError(error);
-        }
+        return nbits.toFixed(2);
     }
 
     function _handleError(err) {
