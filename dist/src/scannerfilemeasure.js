@@ -33,18 +33,14 @@ function scannerFileMeasure() {
          * @param {int} height alto de la página
          */
     };function setPage(width, height) {
-        var isNumber = Number.isInteger(width) || Number.isInteger(height) || width > 0 || height > 0;
+        var isNumber = Number.isInteger(width) && Number.isInteger(height) && width > 0 && height > 0;
 
-        try {
-            if (!isNumber) throw 'Error en las dimensiones de la página';
+        if (!isNumber) throw 'Error en las dimensiones';
 
-            page.width = width;
-            page.height = height;
+        page.width = width;
+        page.height = height;
 
-            return page.width + ' / ' + page.height;
-        } catch (error) {
-            _handleError(error);
-        }
+        return page.width + ' / ' + page.height;
     }
 
     /**
@@ -52,15 +48,11 @@ function scannerFileMeasure() {
      * @param {string} _unit_ 
      */
     function setUnit(_unit_) {
-        try {
-            if (UNITS.indexOf(_unit_) == -1) throw 'Error en la unidad de medida, sólo se permite cm y in';
+        if (UNITS.indexOf(_unit_) == -1) throw 'Error unidad de medida, sólo  cm y in';
 
-            unit = _unit_;
+        unit = _unit_;
 
-            return unit;
-        } catch (error) {
-            _handleError(error);
-        }
+        return unit;
     }
 
     /**
@@ -69,17 +61,14 @@ function scannerFileMeasure() {
      * @param {int} _rv_ resolucion vertical
      */
     function setResolution(_rh_, _rv_) {
-        var isNumber = Number.isInteger(_rh_) || Number.isInteger(_rv_) || _rh_ > 0 || _rv_ > 0;
+        var isNumber = Number.isInteger(_rh_) && Number.isInteger(_rv_) && _rh_ > 0 && _rv_ > 0;
 
-        try {
-            if (!isNumber) throw 'Error en las resoluciones';
-            rh = _rh_;
-            rv = _rv_;
+        if (!isNumber) throw 'Error en las resoluciones';
 
-            return rv + ' / ' + rh;
-        } catch (error) {
-            _handleError(error);
-        }
+        rh = _rh_;
+        rv = _rv_;
+
+        return rv + ' / ' + rh;
     }
 
     /**
@@ -94,10 +83,6 @@ function scannerFileMeasure() {
         var npixel = Math.round(page.width * 1 / 2.54 * rh * (page.height * 1 / 2.54 * rv));
         var nbits = bitspixel * npixel * 1 / bitspixel / MEGABYTE;
 
-        return nbits.toFixed(2);
-    }
-
-    function _handleError(err) {
-        console.error('Error', err);
+        return Number(nbits.toFixed(2));
     }
 }

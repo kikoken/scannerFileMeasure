@@ -26,5 +26,5 @@ sfm.setPage(w,h) // ancho - alto
 sfm.setUnit(unidad) // cm o in
 sfm.setResolution(rh,rv) // resolución horizontal , resolución vertical
 sfm.bits = 8 // default: 8 - otras: 24, 32
-sfm.getDimension()  // return MB file size
+sfm.getDimension()  // return MB file size in number format
 ```

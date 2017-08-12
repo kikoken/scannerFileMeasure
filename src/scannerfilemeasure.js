@@ -28,21 +28,17 @@ function scannerFileMeasure() {
      */
     function setPage(width, height) {
         var isNumber = Number.isInteger(width) 
-            || Number.isInteger(height) 
-            || width > 0 
-            || height > 0 
+            && Number.isInteger(height) 
+            && width > 0 
+            && height > 0 
 
-        try {
-            if(!isNumber)
-                throw 'Error en las dimensiones de la página'
+        if(!isNumber)
+            throw 'Error en las dimensiones'
 
-            page.width = width
-            page.height = height
-            
-            return `${page.width} / ${page.height}`
-        } catch (error) {
-            _handleError(error)
-        }
+        page.width = width
+        page.height = height
+        
+        return `${page.width} / ${page.height}`
     }
 
     /**
@@ -51,7 +47,7 @@ function scannerFileMeasure() {
      */
     function setUnit(_unit_) {  
         if(UNITS.indexOf(_unit_) == -1)
-            throw 'Error en la unidad de medida, sólo se permite cm y in'
+            throw 'Error unidad de medida, sólo  cm y in'
 
         unit = _unit_
 
@@ -65,9 +61,9 @@ function scannerFileMeasure() {
      */
     function setResolution(_rh_, _rv_) {
         var isNumber = Number.isInteger(_rh_) 
-            || Number.isInteger(_rv_) 
-            || _rh_ > 0 
-            || _rv_ > 0
+            && Number.isInteger(_rv_) 
+            && _rh_ > 0 
+            && _rv_ > 0
         
         if(!isNumber)
             throw 'Error en las resoluciones'
@@ -93,7 +89,7 @@ function scannerFileMeasure() {
         let npixel = Math.round((page.width * 1/2.54 * rh) * (page.height * 1/2.54 * rv))
         let nbits = ((bitspixel * npixel) * 1/bitspixel)/MEGABYTE
 
-        return nbits.toFixed(2)
+        return Number(nbits.toFixed(2))
 
     }
 }
